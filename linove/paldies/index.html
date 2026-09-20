@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>LINOVE klīnika — pieteikums saņemts</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+  :root{
+    --page:#FBFAF8; --card:#FFFFFF; --ink:#12171D; --muted:#5D6672; --hair:#E6E3DE;
+    --accent:#0F5C63; --accent-weak:#E7EFEF; --ok:#2E7D5B;
+    --shade:0 1px 1px rgba(18,23,29,.04),0 10px 30px rgba(18,23,29,.06);
+    --serif:"Newsreader",Georgia,serif; --sans:"Source Sans 3",-apple-system,Segoe UI,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --page:#0F1317; --card:#161B21; --ink:#EDF0F3; --muted:#9BA5B0; --hair:#252C34;
+    --accent:#7BA5A9; --accent-weak:#0F1F23; --ok:#63C295;
+    --shade:0 1px 1px rgba(0,0,0,.4),0 14px 34px rgba(0,0,0,.42);}}
+  :root[data-theme="dark"]{
+    --page:#0F1317; --card:#161B21; --ink:#EDF0F3; --muted:#9BA5B0; --hair:#252C34;
+    --accent:#7BA5A9; --accent-weak:#0F1F23; --ok:#63C295;
+    --shade:0 1px 1px rgba(0,0,0,.4),0 14px 34px rgba(0,0,0,.42);}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--page);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6}
+  .wrap{max-width:760px;margin:0 auto;padding:40px 22px 72px}
+  .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+  h1{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.2vw,42px);line-height:1.14;margin:0 0 12px;text-wrap:balance;letter-spacing:-.005em}
+  .lede{color:var(--muted);margin:0;max-width:58ch;font-size:17.5px}
+  header.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+  .who{font-family:var(--serif);font-size:19px;margin:0 0 2px}
+  .where{color:var(--muted);font-size:14.5px;margin:0}
+  .langs{display:flex;gap:4px;border:1px solid var(--hair);border-radius:999px;padding:3px;background:var(--card);flex:none}
+  .langs button{font:inherit;font-size:13px;padding:6px 14px;border:none;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer}
+  .langs button[aria-pressed="true"]{background:var(--accent);color:#fff}
+  section.card{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:24px;box-shadow:var(--shade);margin-top:24px}
+  section.card h2{font-family:var(--serif);font-weight:500;font-size:21px;margin:0 0 4px}
+  section.card .sub{color:var(--muted);margin:0 0 18px;font-size:15.5px}
+  details.day{border-top:1px solid var(--hair);padding:2px 0}
+  details.day:first-of-type{border-top:none}
+  details.day>summary{list-style:none;cursor:pointer;padding:13px 0;display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+  details.day>summary::-webkit-details-marker{display:none}
+  .dname{font-family:var(--serif);font-size:17.5px}
+  .dfree{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px;padding:2px 0 18px}
+  .slot input{position:absolute;opacity:0;width:0;height:0}
+  .slot span{display:block;text-align:center;font-size:15px;font-variant-numeric:tabular-nums;padding:11px 4px;border:1px solid var(--hair);border-radius:8px;cursor:pointer;transition:border-color .15s,background .15s}
+  .slot span:hover{border-color:var(--accent)}
+  .slot input:checked+span{background:var(--accent);border-color:var(--accent);color:#fff}
+  .slot input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+  .slot.gone span{opacity:.34;cursor:not-allowed;text-decoration:line-through}
+  .slot.gone span:hover{border-color:var(--hair)}
+  .fields{display:grid;gap:11px;margin-top:4px}
+  label.f{display:grid;gap:5px;font-size:13px;letter-spacing:.04em;color:var(--muted)}
+  input.t,select.t,textarea.t{font:inherit;font-size:16px;padding:11px 13px;border:1px solid var(--hair);border-radius:8px;background:var(--page);color:var(--ink);width:100%}
+  textarea.t{min-height:78px;resize:vertical}
+  input.t:focus-visible,select.t:focus-visible,textarea.t:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .hp{position:absolute;left:-9999px}
+  .actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:20px}
+  button.primary{font:inherit;font-size:16px;padding:12px 22px;border:none;border-radius:8px;background:var(--accent);color:#fff;cursor:pointer}
+  .chosen{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:26px}
+  .note{border-top:2px solid var(--accent);padding-top:12px}
+  .note b{font-family:var(--serif);font-weight:500;font-size:17px;display:block;margin-bottom:3px}
+  .note span{color:var(--muted);font-size:15px}
+  .callline{margin:18px 0 0;font-size:15.5px;color:var(--muted)}
+  .callline a{color:var(--accent);font-variant-numeric:tabular-nums;text-decoration:none;border-bottom:1px solid var(--accent)}
+  .none{color:var(--muted);margin:0}
+  footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--hair);color:var(--muted);font-size:13.5px;max-width:70ch}
+  .done{border-left:2px solid var(--ok);padding:14px 18px;background:var(--accent-weak);border-radius:0 8px 8px 0;margin:22px 0 0}
+  .done b{font-family:var(--serif);font-weight:500;font-size:17px;font-variant-numeric:tabular-nums}
+  @media (max-width:520px){.wrap{padding:26px 16px 56px}.slots{grid-template-columns:repeat(auto-fill,minmax(76px,1fr))}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header class="top"><div>
+<p class="eyebrow" data-t="eyebrow" data-ru="Запись онлайн">Pieraksts tiešsaistē</p>
+<h1 data-t="thanks_h1" data-ru="Заявка получена">Pieteikums saņemts</h1>
+<p class="who">LINOVE klīnika</p>
+</div><div class="langs" role="group" aria-label="Valoda / Язык"><button type="button" data-lang="lv" aria-pressed="true">LV</button><button type="button" data-lang="ru" aria-pressed="false">RU</button></div></header>
+<p class="lede" data-t="thanks_p" data-ru="Спасибо! Ваша заявка у нас на почте. Время подтверждаем мы — если что-то изменится, мы вам позвоним.">Paldies! Jūsu pieteikums ir mūsu e-pastā. Laiku apstiprinām mēs — ja kaut kas mainīsies, mēs jums piezvanīsim.</p>
+<div class="done" id="slotbox" hidden><span data-t="thanks_slot" data-ru="Выбранное вами время:">Jūsu izvēlētais laiks:</span> <b id="slot"></b></div>
+<section class="card">
+<h2 data-t="n2b" data-ru="Если время не подходит">Ja laiks vairs neder</h2>
+<p class="sub" data-t="n2s" data-ru="Позвоните нам, и мы перенесём визит на другое время.">Piezvaniet mums, un mēs pārcelsim vizīti uz citu laiku.</p>
+<p class="callline"><span data-t="call" data-ru="Или позвоните нам:">Vai zvaniet mums:</span> <a href="tel:+37124401084">+371 24 401 084</a></p></section>
+<footer><a href="../" style="color:var(--accent)" data-t="back" data-ru="Вернуться на страницу записи">Atpakaļ uz pieraksta lapu</a></footer>
+</div>
+<script>
+(function(){
+ try{var v=sessionStorage.getItem("slot");
+  if(v){var p=v.split(" ");document.getElementById("slot").textContent=p[1]+" "+p[0].split("-").reverse().join(".");
+   document.getElementById("slotbox").hidden=false;sessionStorage.removeItem("slot");}}catch(x){}
+ var lang="lv";
+ Array.prototype.forEach.call(document.querySelectorAll(".langs button"),function(b){
+  b.addEventListener("click",function(){
+   lang=b.dataset.lang;
+   Array.prototype.forEach.call(document.querySelectorAll(".langs button"),function(o){
+    o.setAttribute("aria-pressed",String(o===b));});
+   document.documentElement.lang=lang;
+   Array.prototype.forEach.call(document.querySelectorAll("[data-ru]"),function(el){
+    if(!el.dataset.lv)el.dataset.lv=el.textContent;
+    el.textContent=lang==="ru"?el.dataset.ru:el.dataset.lv;});
+  });
+ });
+})();
+</script></body></html>
