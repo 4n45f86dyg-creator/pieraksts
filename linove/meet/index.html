@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>LINOVE klīnika — Kā ir ar sistēmu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
+<style>
+  :root{
+    --accent:#E02028; --accent2:#0B3854; --accent-dark:#AF191F;
+    --accent-soft:#FCE9EA; --on-accent:#FFFFFF;
+    --ink:#141A1F; --paper:#FBFAF8; --card:#FFFFFF; --muted:#5C6570; --hair:#E3E0DB;
+    --shade:0 1px 2px rgba(18,23,29,.05), 0 14px 40px rgba(18,23,29,.07);
+    --device:#EFEDE9; --bubble:#EFEFEF;
+    --head:"Libre Caslon Text", Georgia, 'Times New Roman', serif; --body:"Manrope", -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+    --step:clamp(17px, 0.62vw + 13.5px, 21px);
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --ink:#ECEFF2; --paper:#101418; --card:#171C22; --muted:#9AA4AF; --hair:#262D35;
+    --accent-soft:#1B222A; --device:#1B2129; --bubble:#222932;
+    --shade:0 1px 2px rgba(0,0,0,.4), 0 16px 40px rgba(0,0,0,.45);}}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+       font-size:var(--step);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(20px,2.2vw,40px) clamp(18px,2.4vw,44px) 90px}
+  h1,h2,h3{font-family:var(--head);font-weight:600;letter-spacing:-.01em;text-wrap:balance}
+  h1{font-size:clamp(30px,3.5vw,52px);line-height:1.1;margin:0 0 14px}
+  h2{font-size:clamp(24px,2.3vw,34px);line-height:1.18;margin:0 0 6px}
+  h3{font-size:clamp(19px,1.35vw,23px);line-height:1.25;margin:0 0 6px}
+  p{margin:0 0 10px}
+  a{color:var(--accent-dark)}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) a{color:var(--accent)}}
+
+  header.top{display:flex;justify-content:space-between;align-items:center;gap:24px;
+             flex-wrap:wrap;padding-bottom:18px;border-bottom:3px solid var(--accent);margin-bottom:clamp(24px,3vw,44px)}
+  .brandbar{display:flex;align-items:center;gap:16px;min-width:0}
+  .logo{height:clamp(40px,3.6vw,58px);width:auto;max-width:min(52vw,340px);object-fit:contain;display:block}
+  .wordmark{font-family:var(--head);font-weight:700;font-size:clamp(24px,2.5vw,36px);
+            color:var(--accent);letter-spacing:-.015em;line-height:1.05}
+  .place{color:var(--muted);font-size:.8em;margin:0;font-variant-numeric:tabular-nums}
+  .langs{display:flex;gap:4px;border:1px solid var(--hair);border-radius:999px;padding:4px;background:var(--card)}
+  .langs button{font:inherit;font-size:.78em;font-weight:600;padding:7px 17px;border:none;
+                border-radius:999px;background:transparent;color:var(--muted);cursor:pointer}
+  .langs button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+
+  .hero{margin-bottom:clamp(30px,4vw,56px);max-width:24ch}
+  .hero{max-width:none}
+  .hero h1{max-width:20ch}
+  .lede{color:var(--muted);font-size:1.12em;max-width:52ch;margin:0}
+
+  section{margin:0 0 clamp(34px,4.2vw,64px);scroll-margin-top:20px}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72em;font-weight:700;
+           letter-spacing:.13em;text-transform:uppercase;color:var(--accent-dark);margin:0 0 12px}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .eyebrow{color:var(--accent)}}
+  .eyebrow::before{content:"";width:26px;height:3px;background:var(--accent);border-radius:2px}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin-top:20px}
+  .tile{background:var(--card);border:1px solid var(--hair);border-left:4px solid var(--accent);
+        border-radius:4px 14px 14px 4px;padding:20px 22px;box-shadow:var(--shade)}
+  .tile p{color:var(--muted);margin:0}
+  .src{font-size:.74em;color:var(--muted);margin-top:12px!important;padding-top:10px;
+       border-top:1px solid var(--hair);opacity:.85}
+
+  /* ---- the live phone moment ---- */
+  .stage{display:grid;grid-template-columns:minmax(300px,360px) 1fr;gap:clamp(24px,3vw,46px);align-items:start}
+  @media (max-width:940px){.stage{grid-template-columns:1fr}}
+  .device{background:var(--device);border:1px solid var(--hair);border-radius:34px;padding:12px;
+          box-shadow:var(--shade);position:sticky;top:18px}
+  @media (max-width:940px){.device{position:static;max-width:380px;margin:0 auto}}
+  .screen{background:var(--card);border-radius:26px;min-height:520px;padding:20px 18px;display:flex;flex-direction:column}
+  .bar{display:flex;justify-content:space-between;font-size:.66em;color:var(--muted);
+       font-variant-numeric:tabular-nums;margin-bottom:16px;letter-spacing:.02em}
+  .callview{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px}
+  .avatar{width:86px;height:86px;border-radius:50%;background:var(--accent-soft);display:grid;place-items:center;
+          border:1px solid var(--hair)}
+  .avatar svg{width:34px;height:34px;stroke:var(--accent);fill:none;stroke-width:1.7;stroke-linecap:round}
+  .avatar.ringing{animation:ring 1.5s ease-in-out infinite}
+  @keyframes ring{0%,100%{box-shadow:0 0 0 0 rgba(0,0,0,.001);transform:scale(1)}
+                  50%{box-shadow:0 0 0 16px rgba(0,0,0,0);transform:scale(1.04)}}
+  .callwho{font-family:var(--head);font-weight:600;font-size:1.05em;line-height:1.25}
+  .callnum{color:var(--muted);font-size:.82em;font-variant-numeric:tabular-nums}
+  .statusline{font-size:.7em;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#C0392B}
+  .thread{display:flex;flex-direction:column;gap:12px;overflow:auto}
+  .msg{background:var(--bubble);border-radius:16px 16px 16px 5px;padding:13px 15px;font-size:.84em;
+       max-width:95%;line-height:1.5;animation:pop .28s ease-out}
+  @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .msg .from{display:block;font-size:.72em;letter-spacing:.09em;text-transform:uppercase;
+             color:var(--muted);font-weight:700;margin-bottom:5px}
+  .msg a{color:var(--accent-dark);font-weight:600;word-break:break-word}
+  .tiny{font-size:.76em;color:var(--muted);text-align:center;margin:12px 0 0}
+
+  .steps{display:grid;border-top:1px solid var(--hair)}
+  .step{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--hair);
+        opacity:.4;transition:opacity .35s ease}
+  .step.on{opacity:1}
+  .step .n{width:32px;height:32px;border-radius:50%;border:1px solid var(--hair);display:grid;place-items:center;
+           font-family:var(--head);font-size:.8em;font-weight:700;color:var(--muted);margin-top:2px}
+  .step.on .n{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+  .step h3{margin:0 0 2px;font-size:1.02em}
+  .step p{margin:0;color:var(--muted);font-size:.94em}
+
+  .panel{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:clamp(20px,2vw,28px);
+         box-shadow:var(--shade);margin-top:24px}
+  .panel h3{font-size:1.15em}
+  .panel .sub{color:var(--muted);font-size:.9em;margin:0 0 16px}
+  .day{font-size:.72em;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:18px 0 8px}
+  .day:first-child{margin-top:0}
+  .slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(88px,1fr));gap:8px}
+  .slot{font:inherit;font-size:.86em;font-variant-numeric:tabular-nums;padding:11px 4px;border:1px solid var(--hair);
+        border-radius:9px;background:transparent;color:var(--ink);cursor:pointer}
+  .slot:hover:not([disabled]){border-color:var(--accent)}
+  .slot[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+  .slot[disabled]{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+  form{display:grid;gap:10px;margin-top:18px}
+  input,select{font:inherit;font-size:.92em;padding:12px 14px;border:1px solid var(--hair);border-radius:9px;
+         background:var(--paper);color:var(--ink);width:100%}
+  input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media (max-width:620px){.row2{grid-template-columns:1fr}}
+  .cta{font:inherit;font-family:var(--head);font-weight:600;font-size:1em;padding:13px 26px;border:none;
+       border-radius:10px;background:var(--accent);color:var(--on-accent);cursor:pointer}
+  .cta[disabled]{opacity:.4;cursor:not-allowed}
+  .actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .hint{font-size:.84em;color:var(--muted);font-variant-numeric:tabular-nums}
+  .done{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;
+        padding:14px 18px;margin-top:18px}
+  .done b{font-family:var(--head)}
+  table{width:100%;border-collapse:collapse;font-size:.88em}
+  th{text-align:left;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+     font-weight:700;padding:0 10px 10px 0}
+  td{padding:12px 10px 12px 0;border-top:1px solid var(--hair);font-variant-numeric:tabular-nums;vertical-align:top}
+  .pill{font-size:.78em;padding:3px 11px;border-radius:999px;background:var(--accent-soft);
+        color:var(--accent-dark);white-space:nowrap;font-weight:600}
+  .pill.fresh{background:var(--accent);color:var(--on-accent)}
+  .empty{color:var(--muted);margin:0}
+
+  /* ---- numbers ---- */
+  .money{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start;margin-top:20px}
+  @media (max-width:940px){.money{grid-template-columns:1fr}}
+  .calc{background:var(--card);border:1px solid var(--hair);border-radius:16px;padding:clamp(20px,2vw,28px);box-shadow:var(--shade)}
+  .wagelabel{font-size:.88em;color:var(--muted);margin:0 0 16px;padding-bottom:14px;border-bottom:1px solid var(--hair)}
+  .calcrow{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-bottom:1px solid var(--hair);flex-wrap:wrap}
+  .calcrow:last-of-type{border-bottom:none}
+  .calcrow b{font-family:var(--head);font-weight:600;font-size:1.05em;white-space:nowrap}
+  .calcrow span{color:var(--muted);font-variant-numeric:tabular-nums;text-align:right}
+  .price{background:var(--accent);color:var(--on-accent);border-radius:16px;padding:clamp(20px,2vw,28px);box-shadow:var(--shade)}
+  .price h3{color:inherit;margin-bottom:14px}
+  .price .big{font-family:var(--head);font-size:clamp(30px,3vw,42px);font-weight:700;line-height:1;
+              font-variant-numeric:tabular-nums}
+  .price ul{list-style:none;margin:0;padding:0}
+  .price li{padding:11px 0;border-bottom:1px solid rgba(255,255,255,.22);display:flex;
+            justify-content:space-between;gap:14px;align-items:baseline;font-size:.94em}
+  .price li:last-child{border-bottom:none}
+  .price .note{opacity:.9;font-size:.9em}
+  .yours{margin-top:20px;border:1px dashed var(--accent);border-radius:16px;padding:clamp(18px,1.8vw,26px);
+         background:var(--accent-soft)}
+  .yours h3{font-size:1.05em}
+  .yours label{display:block;color:var(--muted);font-size:.88em;margin:0 0 12px;max-width:62ch}
+  .yourin{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .yourin input{max-width:190px;font-variant-numeric:tabular-nums;font-size:1.05em}
+  .eur{font-family:var(--head);font-size:1.2em;color:var(--muted)}
+  .yourout{margin-top:16px;display:grid;gap:8px}
+  .yourout div{display:flex;gap:12px;align-items:baseline;font-variant-numeric:tabular-nums}
+  .yourout b{font-family:var(--head);font-size:1.5em;color:var(--accent-dark);min-width:2.2ch}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .yourout b{color:var(--accent)}}
+  .yourout span{color:var(--muted);font-size:.92em}
+  .yourdash{color:var(--muted);font-size:.9em;margin:16px 0 0}
+
+  /* ---- get / next ---- */
+  .gets{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:4px 34px;margin-top:20px}
+  .get{padding:18px 0;border-top:1px solid var(--hair)}
+  .get h3{font-size:1.02em}
+  .get p{color:var(--muted);font-size:.92em;margin:0}
+  .next{background:var(--card);border:1px solid var(--hair);border-top:4px solid var(--accent);
+        border-radius:4px 4px 16px 16px;padding:clamp(24px,2.6vw,38px);box-shadow:var(--shade)}
+  .next p{font-size:1.1em;max-width:60ch}
+  .sig{display:flex;gap:14px 30px;align-items:baseline;flex-wrap:wrap;margin-top:22px;
+       padding-top:20px;border-top:1px solid var(--hair)}
+  .sig .nm{font-family:var(--head);font-weight:600;font-size:1.2em}
+  .sig a{font-size:1.25em;font-weight:600;font-variant-numeric:tabular-nums;text-decoration:none;
+         font-family:var(--head)}
+  .later{color:var(--muted);font-size:.92em;max-width:76ch;margin:22px 0 0}
+  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--hair);color:var(--muted);
+         font-size:.78em;max-width:82ch;line-height:1.55}
+  footer p{margin:0 0 5px}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  @media print{.device{position:static}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brandbar">
+      <img class="logo" src="https://linove.eu/wp-content/plugins/linove/assets/imgs/Logo.webp" alt="LINOVE klīnika">
+      <p class="place">Rīga, Vienības gatve 109<br>+371 24 401 084</p>
+    </div>
+    <div class="langs" role="group" aria-label="Valoda"><button type="button" data-lang="lv" aria-pressed="true">LV</button><button type="button" data-lang="ru" aria-pressed="false">RU</button></div>
+  </header>
+
+  <div class="hero">
+    <h1 data-t="headline"></h1>
+    <p class="lede" data-t="lede"></p>
+  </div>
+
+  <section id="today">
+    <p class="eyebrow" data-t="today"></p>
+    <h2 data-t="s1h"></h2>
+    <p class="lede" data-t="s1p"></p>
+    <div class="tiles"><article class="tile"><h3 data-k="today_items.0.h">Par to raksta jūsu pašu pacienti</h3><p data-k="today_items.0.p">Starp jaunākajām viena zvaigznes atsauksmēm Google atkārtojas viens un tas pats: pierakstīties neizdodas, zvani reģistratūrai paliek bez atbildes un bez atzvana. Viens no vārdiem, ko pacienti lieto, ir “nereāli”.</p><p class="src"><span data-t="srcnote">Avots</span>: Google Maps, 4,8 ★ / 133 atsauksmes, lasītas 18.09.2026</p></article><article class="tile"><h3 data-k="today_items.1.h">Jūs jau maksājat par šo darbu</h3><p data-k="today_items.1.p">Sludinājumā jūs meklējat pacientu reģistratoru par 10 € stundā pirms nodokļiem. Zvanu pieņemšana, pieraksti un atgādinājumi ir daļa no tā darba.</p><p class="src"><span data-t="srcnote">Avots</span>: ss.lv sludinājums, 15.09.2026</p></article><article class="tile"><h3 data-k="today_items.2.h">Neatbildēts zvans neatstāj pieteikumu</h3><p data-k="today_items.2.p">Nav vārda, nav vajadzības, nav izvēlēta laika. Paliek tikai numurs, kuram kādam jāatzvana — un tas notiek tad, kad reģistratūra ir brīva, nevis tad, kad pacients gaida.</p></article></div>
+  </section>
+
+  <section id="system">
+    <p class="eyebrow" data-t="system"></p>
+    <div class="stage">
+      <div class="device">
+        <div class="screen">
+          <div class="bar"><span id="clock">09:41</span><span>LMT</span></div>
+          <div class="callview" id="callview">
+            <div class="avatar" id="avatar" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4.5 5.5c0-.6.4-1 1-1h2.2c.5 0 .9.3 1 .8l.7 2.6c.1.4 0 .8-.3 1l-1.3 1a12 12 0 0 0 5.3 5.3l1-1.3c.2-.3.6-.4 1-.3l2.6.7c.5.1.8.5.8 1v2.2c0 .6-.4 1-1 1A15.5 15.5 0 0 1 4.5 5.5Z"/></svg>
+            </div>
+            <div class="callwho" id="callwho"></div>
+            <div class="callnum">+371 24 401 084</div>
+            <div class="statusline" id="statusline" hidden></div>
+            <button class="cta" id="startbtn" type="button" data-t="call"></button>
+            <p class="tiny" data-t="callhint"></p>
+          </div>
+          <div class="thread" id="thread" hidden></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="steps">
+          <div class="step" id="s1"><div class="n">1</div><div><h3 data-t="s1h"></h3><p data-t="s1p"></p></div></div>
+          <div class="step" id="s2"><div class="n">2</div><div><h3 data-t="s2h"></h3><p data-t="s2p"></p></div></div>
+          <div class="step" id="s3"><div class="n">3</div><div><h3 data-t="s3h"></h3><p data-t="s3p"></p></div></div>
+          <div class="step" id="s4"><div class="n">4</div><div><h3 data-t="s4h"></h3><p data-t="s4p"></p></div></div>
+        </div>
+
+        <section class="panel" id="booking" hidden aria-live="polite">
+          <h3 data-t="bh"></h3>
+          <p class="sub" data-t="bs"></p>
+          <div id="slotbox"></div>
+          <form id="bookform">
+            <div class="row2">
+              <input id="nm" type="text" autocomplete="name" required>
+              <input id="tel" type="tel" autocomplete="tel" required>
+            </div>
+            <select id="svc"></select>
+            <div class="actions">
+              <button class="cta" id="confirm" type="submit" disabled data-t="confirm"></button>
+              <span class="hint" id="pickhint" data-t="pick"></span>
+            </div>
+          </form>
+          <div id="result"></div>
+        </section>
+
+        <section class="panel" id="ownerpanel" hidden>
+          <h3 data-t="oh"></h3>
+          <p class="sub" data-t="os"></p>
+          <div id="ownerbox"></div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section id="numbers">
+    <p class="eyebrow" data-t="numbers"></p>
+    <h2 data-t="numbers"></h2>
+    <div class="money">
+      <div>
+        <div class="calc">
+          <p class="wagelabel" data-t="wage_label"></p>
+          <div class="calcrow"><b data-k="wage_rows.0.a">29 € mēnesī</b><span data-k="wage_rows.0.b">= 2.9 stundas no šīs algas</span></div><div class="calcrow"><b data-k="wage_rows.1.a">149 € uzstādīšana</b><span data-k="wage_rows.1.b">= 14.9 stundas, vienu reizi</span></div>
+        </div>
+        <div class="yours">
+          <h3 data-t="yours"></h3>
+          <label for="worth" data-t="yourslabel"></label>
+          <div class="yourin">
+            <input id="worth" type="number" min="1" step="1" inputmode="numeric">
+            <span class="eur">&euro;</span>
+          </div>
+          <div class="yourout" id="yourout" hidden></div>
+          <p class="yourdash" id="yourdash" data-t="ydash"></p>
+        </div>
+      </div>
+      <div class="price">
+        <h3 data-t="priceh"></h3>
+        <ul>
+          <li><span class="big">149 &euro;</span><span class="note" data-t="p1"></span></li>
+          <li><span class="big">29 &euro;</span><span class="note" data-t="p2"></span></li>
+          <li><span class="note" data-t="p3"></span></li>
+          <li><span class="note" data-t="p4"></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="get">
+    <p class="eyebrow" data-t="get"></p>
+    <h2 data-t="get"></h2>
+    <div class="gets"><article class="get"><h3 data-k="get_items.0.h">Pieraksta lapa jūsu krāsās</h3><p data-k="get_items.0.p">Ar jūsu logo, jūsu pakalpojumiem un jūsu darba laiku. Telefonā un datorā.</p></article><article class="get"><h3 data-k="get_items.1.h">Pieteikumi nonāk pie jums</h3><p data-k="get_items.1.p">Uz jūsu e-pastu vai kalendāru, ar visu informāciju. Nekur citur tie neaiziet.</p></article><article class="get"><h3 data-k="get_items.2.h">Atgādinājumi pirms vizītes</h3><p data-k="get_items.2.p">Diennakti iepriekš un divas stundas pirms laika.</p></article><article class="get"><h3 data-k="get_items.3.h">Jūsu numurs paliek tas pats</h3><p data-k="get_items.3.p">Mājaslapā, Google un vizītkartēs nekas nav jāmaina.</p></article><article class="get"><h3 data-k="get_items.4.h">Uzstādīšana — viena diena</h3><p data-k="get_items.4.p">Jums nav ko apgūt. Sistēma strādā fonā.</p></article><article class="get"><h3 data-k="get_items.5.h">Klientu dati paliek pie jums</h3><p data-k="get_items.5.p">Mēs tos neglabājam un nevienam nenododam.</p></article></div>
+  </section>
+
+  <section id="next">
+    <div class="next">
+      <p class="eyebrow" data-t="next"></p>
+      <p data-t="nextp"></p>
+      <div class="sig">
+        <span class="nm">Marians</span>
+        <a href="tel:+37125130433">+371 25 130 433</a>
+      </div>
+      <p class="later" data-t="later"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p data-t="foot"></p>
+    <p data-t="brandnote"></p>
+    <p>2026-09-21</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+var S = {"lv": {"today": "Kā ir šodien", "system": "Kā ir ar sistēmu", "numbers": "Ko tas maina skaitļos", "get": "Ko jūs saņemat", "next": "Nākamais solis", "call": "Zvanīt", "callhint": "Neviens nepaceļ. Skatieties, ko saņem zvanītājs.", "missed": "Neatbildēts zvans", "ringing": "Zvana…", "s1h": "Zvans paliek bez atbildes", "s2h": "Pēc dažām sekundēm — īsziņa", "s3h": "Cilvēks izvēlas laiku pats", "s4h": "Atgādinājums pirms vizītes", "s2p": "Zvanītājs saņem ziņu ar saiti uz brīvajiem laikiem. Jums nekas nav jādara.", "s3p": "Divi pieskārieni — un pieteikums ir pie jums, ar vārdu, telefonu un izvēlēto laiku.", "s4p": "Diennakti iepriekš un divas stundas pirms laika. Tieši tas samazina neatnākšanu.", "bh": "Brīvie laiki", "bs": "Tā izskatās lapa, uz kuru cilvēks nokļūst no īsziņas — jūsu krāsās.", "confirm": "Pieteikties", "pick": "Vispirms izvēlieties laiku", "taken": "Aizņemts", "nm": "Vārds, uzvārds", "tel": "Telefons", "svc": "Kāpēc griežaties", "oh": "Jūsu puse", "os": "Pieteikumi, kas ienāca, kamēr neviens neatbildēja uz zvanu.", "cols": ["Laiks", "Cilvēks", "Telefons", "Vajadzība", ""], "none": "Pagaidām tukšs — sāciet ar zvanu pa kreisi.", "fresh": "jauns", "via": "no neatbildēta zvana", "okh": "Pieteikums pie jums", "okp": "Zvanītājs saņēma apstiprinājumu un saņems atgādinājumu.", "sms": "Paldies par zvanu. Šobrīd nevaram atbildēt — izvēlieties sev ērtu laiku:", "conf": "Pieraksts apstiprināts:", "rem": "Atgādinām par vizīti rīt plkst.", "remtail": "Ja laiks neder, atbildiet uz šo ziņu.", "days": ["svētdien", "pirmdien", "otrdien", "trešdien", "ceturtdien", "piektdien", "sestdien"], "priceh": "Cena", "p1": "uzstādīšana, vienreiz", "p2": "mēnesī", "p3": "200 īsziņas mēnesī iekļautas", "p4": "var pārtraukt jebkurā mēnesī", "yours": "Jūsu skaitlis", "yourslabel": "Cik jums vidēji ir vērts viens klients, kas pierakstās? Ierakstiet savu skaitli — mēs to nezinām un neizdomāsim.", "yoursph": "piem. 60", "y1": "klienti mēnesī sedz abonementu", "y2": "klienti pirmajā gadā sedz visu (149 € + 12 × 29 €)", "ydash": "Ierakstiet skaitli, un šeit parādīsies, cik klientu to sedz.", "nextp": "Ja šķiet, ka ir vērts — uztaisām jūsu lapu un parādām to strādājam. Bez saistībām, bez priekšapmaksas.", "later": "Vēlāk, ja būs vērts: pieteikumu sadale starp speciālistiem, atgādinājumi cilvēkiem, kuri sen nav bijuši, un zvanu pieņemšana arī tad, kad neviens nav pie telefona.", "srcnote": "Avots", "footdemo": "Demonstrācija, sagatavota {biz}. Laiki ir paraugam; īstajā uzstādīšanā tie nāk no jūsu kalendāra.", "footbrand": "Krāsas un burtveidoli nolasīti no {site}.", "footguess": "Nav atrasts un izvēlēts neitrāls: {what}.", "biz": "LINOVE klīnikai", "headline": "Pacients, kurš nesagaida atbildi, aiziet uz nākamo klīniku", "lede": "Kas notiek ar cilvēku, kurš piezvana, kamēr reģistratūra runā ar citu, vai vakarā pēc 18:00.", "s1p": "Reģistratūra runā ar citu pacientu, līnija ir aizņemta vai jau ir pēc darba laika. Zvans nekur netiek pierakstīts, un pacients paliek bez laika.", "today_items": [{"h": "Par to raksta jūsu pašu pacienti", "p": "Starp jaunākajām viena zvaigznes atsauksmēm Google atkārtojas viens un tas pats: pierakstīties neizdodas, zvani reģistratūrai paliek bez atbildes un bez atzvana. Viens no vārdiem, ko pacienti lieto, ir “nereāli”.", "src": "Google Maps, 4,8 ★ / 133 atsauksmes, lasītas 18.09.2026"}, {"h": "Jūs jau maksājat par šo darbu", "p": "Sludinājumā jūs meklējat pacientu reģistratoru par 10 € stundā pirms nodokļiem. Zvanu pieņemšana, pieraksti un atgādinājumi ir daļa no tā darba.", "src": "ss.lv sludinājums, 15.09.2026"}, {"h": "Neatbildēts zvans neatstāj pieteikumu", "p": "Nav vārda, nav vajadzības, nav izvēlēta laika. Paliek tikai numurs, kuram kādam jāatzvana — un tas notiek tad, kad reģistratūra ir brīva, nevis tad, kad pacients gaida.", "src": ""}], "wage_label": "Jūsu sludinājumā ss.lv: pacientu reģistrators, 10 € stundā pirms nodokļiem (15.09.2026).", "wage_rows": [{"a": "29 € mēnesī", "b": "= 2.9 stundas no šīs algas"}, {"a": "149 € uzstādīšana", "b": "= 14.9 stundas, vienu reizi"}], "get_items": [{"h": "Pieraksta lapa jūsu krāsās", "p": "Ar jūsu logo, jūsu pakalpojumiem un jūsu darba laiku. Telefonā un datorā."}, {"h": "Pieteikumi nonāk pie jums", "p": "Uz jūsu e-pastu vai kalendāru, ar visu informāciju. Nekur citur tie neaiziet."}, {"h": "Atgādinājumi pirms vizītes", "p": "Diennakti iepriekš un divas stundas pirms laika."}, {"h": "Jūsu numurs paliek tas pats", "p": "Mājaslapā, Google un vizītkartēs nekas nav jāmaina."}, {"h": "Uzstādīšana — viena diena", "p": "Jums nav ko apgūt. Sistēma strādā fonā."}, {"h": "Klientu dati paliek pie jums", "p": "Mēs tos neglabājam un nevienam nenododam."}], "services": ["Dermatologa konsultācija", "Imunologa konsultācija", "Ultrasonogrāfija", "Ādas veidojumu noņemšana", "Lāzerepilācija", "Kosmetoloģijas procedūra"], "smsfrom": "LINOVE", "who": "Pacients", "foot": "Demonstrācija, sagatavota LINOVE klīnikai. Laiki ir paraugam; īstajā uzstādīšanā tie nāk no jūsu kalendāra.", "brandnote": "Krāsas un burtveidoli nolasīti no linove.eu."}, "ru": {"today": "Как есть сегодня", "system": "Как это работает с системой", "numbers": "Что это меняет в цифрах", "get": "Что вы получаете", "next": "Следующий шаг", "call": "Позвонить", "callhint": "Никто не берёт трубку. Смотрите, что получает звонящий.", "missed": "Пропущенный звонок", "ringing": "Звонок…", "s1h": "Звонок остаётся без ответа", "s2h": "Через несколько секунд — SMS", "s3h": "Человек сам выбирает время", "s4h": "Напоминание перед визитом", "s2p": "Звонящий получает сообщение со ссылкой на свободное время. Вам делать ничего не нужно.", "s3p": "Два касания — и заявка у вас, с именем, телефоном и выбранным временем.", "s4p": "За сутки и за два часа до времени. Именно это снижает неявки.", "bh": "Свободное время", "bs": "Так выглядит страница, куда человек попадает из SMS — в ваших цветах.", "confirm": "Записаться", "pick": "Сначала выберите время", "taken": "Занято", "nm": "Имя, фамилия", "tel": "Телефон", "svc": "С чем обращаетесь", "oh": "Ваша сторона", "os": "Заявки, пришедшие, пока никто не отвечал на звонок.", "cols": ["Время", "Человек", "Телефон", "Причина", ""], "none": "Пока пусто — начните со звонка слева.", "fresh": "новая", "via": "из пропущенного звонка", "okh": "Заявка у вас", "okp": "Звонящий получил подтверждение и получит напоминание.", "sms": "Спасибо за звонок. Сейчас не можем ответить — выберите удобное время:", "conf": "Запись подтверждена:", "rem": "Напоминаем о визите завтра в", "remtail": "Если время не подходит, ответьте на это сообщение.", "days": ["воскресенье", "понедельник", "вторник", "среду", "четверг", "пятницу", "субботу"], "priceh": "Цена", "p1": "настройка, один раз", "p2": "в месяц", "p3": "200 SMS в месяц включено", "p4": "можно прекратить в любой месяц", "yours": "Ваша цифра", "yourslabel": "Сколько в среднем стоит один записавшийся клиент? Впишите свою цифру — мы её не знаем и выдумывать не будем.", "yoursph": "напр. 60", "y1": "клиента(ов) в месяц покрывают абонемент", "y2": "клиента(ов) за первый год покрывают всё (149 € + 12 × 29 €)", "ydash": "Впишите цифру — и здесь появится, сколько клиентов её покрывают.", "nextp": "Если кажется, что стоит — сделаем вашу страницу и покажем её в работе. Без обязательств и без предоплаты.", "later": "Позже, если будет смысл: распределение заявок между специалистами, напоминания тем, кто давно не был, и приём звонков тогда, когда никого нет у телефона.", "srcnote": "Источник", "footdemo": "Демонстрация, подготовленная для {biz}. Время показано для примера; при настройке оно берётся из вашего календаря.", "footbrand": "Цвета и шрифты считаны с {site}.", "footguess": "Не найдено, взято нейтральное: {what}.", "biz": "клинике LINOVE", "headline": "Пациент, не дождавшийся ответа, уходит в следующую клинику", "lede": "Что происходит с человеком, который звонит, пока регистратура говорит с другим, или вечером после 18:00.", "s1p": "Регистратура говорит с другим пациентом, линия занята или уже нерабочее время. Звонок нигде не фиксируется, и пациент остаётся без времени.", "today_items": [{"h": "Об этом пишут ваши же пациенты", "p": "Среди свежих отзывов на одну звезду в Google повторяется одно и то же: записаться не получается, звонки в регистратуру остаются без ответа и без обратного звонка.", "src": "Google Maps, 4,8 ★ / 133 atsauksmes, lasītas 18.09.2026"}, {"h": "Вы уже платите за эту работу", "p": "В объявлении вы ищете регистратора пациентов за 10 € в час до налогов. Приём звонков, записи и напоминания — часть этой работы.", "src": "ss.lv sludinājums, 15.09.2026"}, {"h": "Неотвеченный звонок не оставляет заявки", "p": "Ни имени, ни потребности, ни выбранного времени. Остаётся только номер, которому кто-то должен перезвонить — и это происходит, когда регистратура свободна, а не когда пациент ждёт.", "src": ""}], "wage_label": "В вашем объявлении на ss.lv: регистратор пациентов, 10 € в час до налогов (15.09.2026).", "wage_rows": [{"a": "29 € в месяц", "b": "= 2.9 часа этой зарплаты"}, {"a": "149 € настройка", "b": "= 14.9 часа, один раз"}], "get_items": [{"h": "Страница записи в ваших цветах", "p": "С вашим логотипом, вашими услугами и вашим рабочим временем. На телефоне и на компьютере."}, {"h": "Заявки приходят к вам", "p": "На вашу почту или в календарь, со всей информацией. Больше никуда они не уходят."}, {"h": "Напоминания перед визитом", "p": "За сутки и за два часа до времени."}, {"h": "Ваш номер остаётся прежним", "p": "На сайте, в Google и на визитках ничего менять не нужно."}, {"h": "Настройка — один день", "p": "Вам учиться нечему. Система работает в фоне."}, {"h": "Данные клиентов остаются у вас", "p": "Мы их не храним и никому не передаём."}], "services": ["Консультация дерматолога", "Консультация иммунолога", "Ультрасонография (УЗИ)", "Удаление образований кожи", "Лазерная эпиляция", "Косметологическая процедура"], "smsfrom": "LINOVE", "who": "Пациент", "foot": "Демонстрация, подготовленная для клинике LINOVE. Время показано для примера; при настройке оно берётся из вашего календаря.", "brandnote": "Цвета и шрифты считаны с linove.eu."}};
+var lang = "lv";
+var picked = null, rows = [], started = false;
+var q = function(s){ return document.querySelector(s); };
+var pad = function(n){ return String(n).padStart(2,"0"); };
+var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+var wait = function(ms){ return new Promise(function(r){ setTimeout(r, reduced ? 0 : ms); }); };
+var T = function(){ return S[lang]; };
+
+function dig(obj, path){
+  var parts = path.split("."), cur = obj;
+  for (var i = 0; i < parts.length; i++){
+    if (cur == null) return "";
+    cur = cur[parts[i]];
+  }
+  return cur == null ? "" : cur;
+}
+
+function paint(){
+  var t = T();
+  document.querySelectorAll("[data-t]").forEach(function(el){
+    var v = t[el.dataset.t];
+    if (typeof v === "string") el.textContent = v;
+  });
+  document.querySelectorAll("[data-k]").forEach(function(el){
+    var v = dig(t, el.dataset.k);
+    if (typeof v === "string") el.textContent = v;
+  });
+  q("#callwho").textContent = t.biz;
+  q("#nm").placeholder = t.nm;
+  q("#tel").placeholder = t.tel;
+  q("#statusline").textContent = t.missed;
+  var sel = q("#svc");
+  sel.textContent = "";
+  var ph = document.createElement("option");
+  ph.value = ""; ph.textContent = t.svc; sel.appendChild(ph);
+  t.services.forEach(function(s){
+    var o = document.createElement("option"); o.value = s; o.textContent = s; sel.appendChild(o);
+  });
+  document.querySelectorAll(".langs button").forEach(function(b){
+    b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+  });
+  document.documentElement.lang = lang;
+  document.title = t.biz + " — " + t.system;
+  drawSlots(); drawOwner(); drawWorth();
+}
+
+document.querySelectorAll(".langs button").forEach(function(b){
+  b.addEventListener("click", function(){ lang = b.dataset.lang; paint(); });
+});
+
+function days(){
+  var out = [], now = new Date();
+  for (var d = 1; d <= 3 && out.length < 3; d++){
+    var day = new Date(now.getFullYear(), now.getMonth(), now.getDate() + d);
+    if (day.getDay() === 0) { d++; day = new Date(now.getFullYear(), now.getMonth(), now.getDate() + d); }
+    var times = [];
+    for (var h = 9; h <= 17; h++){ times.push(pad(h) + ":00"); times.push(pad(h) + ":30"); }
+    out.push({
+      key: day.getFullYear() + "-" + pad(day.getMonth()+1) + "-" + pad(day.getDate()),
+      label: T().days[day.getDay()] + ", " + day.getDate() + "." + pad(day.getMonth()+1) + ".",
+      times: times
+    });
+  }
+  return out;
+}
+
+function drawSlots(){
+  var box = q("#slotbox"); if (!box) return;
+  box.textContent = "";
+  var taken = {}; rows.forEach(function(r){ taken[r.slot] = 1; });
+  days().forEach(function(day, di){
+    var h = document.createElement("div"); h.className = "day"; h.textContent = day.label; box.appendChild(h);
+    var g = document.createElement("div"); g.className = "slots";
+    day.times.forEach(function(time, ti){
+      var id = day.key + " " + time;
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "slot"; b.textContent = time;
+      b.setAttribute("aria-pressed", String(picked === id));
+      if (taken[id] || (di === 0 && ti % 5 === 1)) { b.disabled = true; b.title = T().taken; }
+      b.addEventListener("click", function(){
+        picked = id;
+        q("#confirm").disabled = false;
+        q("#pickhint").textContent = day.label + " " + time;
+        drawSlots();
+      });
+      g.appendChild(b);
+    });
+    box.appendChild(g);
+  });
+}
+
+function drawOwner(){
+  var box = q("#ownerbox"); if (!box) return;
+  box.textContent = "";
+  if (!rows.length){
+    var p = document.createElement("p"); p.className = "empty"; p.textContent = T().none;
+    box.appendChild(p); return;
+  }
+  var table = document.createElement("table");
+  var thead = document.createElement("thead"), tr = document.createElement("tr");
+  T().cols.forEach(function(c){ var th = document.createElement("th"); th.textContent = c; tr.appendChild(th); });
+  thead.appendChild(tr); table.appendChild(thead);
+  var tb = document.createElement("tbody");
+  rows.slice().sort(function(a,b){ return a.slot.localeCompare(b.slot); }).forEach(function(r, i){
+    var row = document.createElement("tr");
+    [r.slot.replace(" ", " · "), r.name, r.phone, r.svc || "—"].forEach(function(v){
+      var td = document.createElement("td"); td.textContent = v; row.appendChild(td);
+    });
+    var td = document.createElement("td"), tag = document.createElement("span");
+    var last = i === rows.length - 1;
+    tag.className = "pill" + (last ? " fresh" : "");
+    tag.textContent = last ? T().fresh : T().via;
+    td.appendChild(tag); row.appendChild(td); tb.appendChild(row);
+  });
+  table.appendChild(tb); box.appendChild(table);
+}
+
+function bubble(nodes){
+  var d = document.createElement("div"); d.className = "msg";
+  var from = document.createElement("span"); from.className = "from";
+  from.textContent = T().smsfrom; d.appendChild(from);
+  nodes.forEach(function(n){ d.appendChild(n); });
+  q("#thread").appendChild(d);
+  q("#thread").scrollTop = q("#thread").scrollHeight;
+  return d;
+}
+
+q("#startbtn").addEventListener("click", function(){
+  if (started) return; started = true;
+  var t = T();
+  q("#startbtn").disabled = true;
+  q("#avatar").classList.add("ringing");
+  q("#s1").classList.add("on");
+  wait(2400).then(function(){
+    q("#avatar").classList.remove("ringing");
+    q("#statusline").hidden = false;
+    return wait(900);
+  }).then(function(){
+    q("#callview").hidden = true;
+    q("#thread").hidden = false;
+    q("#s2").classList.add("on");
+    var a = document.createElement("a");
+    a.href = "#booking"; a.textContent = "linove.eu/pieraksts".replace(/^https?:\/\//, "");
+    a.addEventListener("click", function(e){
+      e.preventDefault();
+      q("#booking").scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "center" });
+    });
+    bubble([document.createTextNode(T().sms + " "), a]);
+    return wait(650);
+  }).then(function(){
+    q("#booking").hidden = false;
+    q("#ownerpanel").hidden = false;
+    q("#s3").classList.add("on");
+    drawSlots(); drawOwner();
+  });
+});
+
+q("#bookform").addEventListener("submit", function(e){
+  e.preventDefault();
+  if (!picked) return;
+  var t = T();
+  rows.push({
+    slot: picked,
+    name: q("#nm").value.trim() || t.nm,
+    phone: q("#tel").value.trim() || "+371 2…",
+    svc: q("#svc").value
+  });
+  var r = rows[rows.length - 1];
+  q("#confirm").disabled = true;
+  var res = q("#result"); res.textContent = "";
+  var box = document.createElement("div"); box.className = "done";
+  var b = document.createElement("b"); b.textContent = t.okh;
+  var p = document.createElement("p"); p.style.margin = "4px 0 0";
+  p.textContent = r.slot.replace(" ", " · ") + " — " + t.okp;
+  box.appendChild(b); box.appendChild(p); res.appendChild(box);
+  picked = null;
+  q("#pickhint").textContent = t.pick;
+  drawSlots(); drawOwner();
+  bubble([document.createTextNode(t.conf + " " + r.slot.replace(" ", " · "))]);
+  wait(1300).then(function(){
+    q("#s4").classList.add("on");
+    bubble([document.createTextNode(t.rem + " " + r.slot.split(" ")[1] + ". " + t.remtail)]);
+  });
+});
+
+function drawWorth(){
+  var val = parseFloat(q("#worth").value);
+  var out = q("#yourout"), dash = q("#yourdash");
+  if (!(val > 0)) { out.hidden = true; dash.hidden = false; dash.textContent = T().ydash; return; }
+  var year = 149 + 12 * 29;
+  var pairs = [[Math.ceil(29 / val), T().y1], [Math.ceil(year / val), T().y2]];
+  out.textContent = "";
+  pairs.forEach(function(p){
+    var d = document.createElement("div");
+    var b = document.createElement("b"); b.textContent = p[0];
+    var s = document.createElement("span"); s.textContent = p[1];
+    d.appendChild(b); d.appendChild(s); out.appendChild(d);
+  });
+  out.hidden = false; dash.hidden = true;
+}
+q("#worth").addEventListener("input", drawWorth);
+
+(function(){
+  var c = q("#clock");
+  var tick = function(){ var d = new Date(); c.textContent = pad(d.getHours()) + ":" + pad(d.getMinutes()); };
+  tick(); setInterval(tick, 20000);
+})();
+
+paint();
+})();
+</script>
+</body>
+</html>
