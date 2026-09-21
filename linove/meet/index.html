@@ -71,6 +71,7 @@
 
   /* ---- the live phone moment ---- */
   .stage{display:grid;grid-template-columns:minmax(300px,360px) 1fr;gap:clamp(24px,3vw,46px);align-items:start}
+  .stage > *{min-width:0}
   @media (max-width:940px){.stage{grid-template-columns:1fr}}
   .device{background:var(--device);border:1px solid var(--hair);border-radius:34px;padding:12px;
           box-shadow:var(--shade);position:sticky;top:18px}
@@ -133,6 +134,7 @@
   .done{border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;
         padding:14px 18px;margin-top:18px}
   .done b{font-family:var(--head)}
+  #ownerbox{overflow-x:auto}
   table{width:100%;border-collapse:collapse;font-size:.88em}
   th{text-align:left;font-size:.78em;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
      font-weight:700;padding:0 10px 10px 0}
