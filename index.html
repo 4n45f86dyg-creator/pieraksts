@@ -426,7 +426,12 @@
         </ul>
       </div>
       <div>
-        <form class="card" id="contact-form" novalidate>
+        <form class="card" id="contact-form" method="POST" action="https://api.web3forms.com/submit">
+          <input type="hidden" name="access_key" value="f3e1b9be-e0cf-4f2d-867d-fd90b9ba4786">
+          <input type="hidden" name="subject" value="Jauns pieteikums — pieraksts.eu">
+          <input type="hidden" name="from_name" value="pieraksts.eu mājaslapa">
+          <input type="hidden" name="redirect" value="https://pieraksts.eu/?sent=1">
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none !important">
           <div class="field"><label for="f-name">Vārds</label><input id="f-name" name="name" required autocomplete="name" placeholder="Jānis Bērziņš"></div>
           <div class="field"><label for="f-email">E-pasts</label><input id="f-email" name="email" type="email" required autocomplete="email" placeholder="janis@uznemums.lv"></div>
           <div class="field"><label for="f-company">Uzņēmums</label><input id="f-company" name="company" autocomplete="organization" placeholder="Uzņēmuma nosaukums"></div>
@@ -476,17 +481,23 @@
   var nav=document.querySelector('.nav');
   window.addEventListener('scroll',function(){ if(nav){ nav.classList.toggle('scrolled', window.scrollY>40); } },{passive:true});
 
-  // contact form
-  var form=document.getElementById('contact-form');
-  if(form){
-    form.addEventListener('submit',function(e){
-      e.preventDefault();
-      if(!form.checkValidity()){ form.reportValidity(); return; }
-      form.hidden=true;
-      var ok=document.getElementById('form-ok');
-      if(ok){ ok.hidden=false; ok.scrollIntoView({behavior:'smooth',block:'center'}); }
-    });
-  }
+  // contact form: native POST to Web3Forms, then show success on redirect back (?sent=1)
+  (function(){
+    var form=document.getElementById('contact-form');
+    var ok=document.getElementById('form-ok');
+    var sent=false;
+    try{ sent = new URLSearchParams(location.search).get('sent')==='1'; }catch(e){}
+    if(sent){
+      if(form) form.hidden=true;
+      if(ok){ ok.hidden=false; setTimeout(function(){ try{ ok.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){} },350); }
+    }
+    if(form){
+      form.addEventListener('submit',function(){
+        var b=form.querySelector('button[type="submit"]');
+        if(b){ b.textContent='Sūta…'; b.disabled=true; }
+      });
+    }
+  })();
 
   // 3D hero
   var canvas=document.getElementById('scene');
