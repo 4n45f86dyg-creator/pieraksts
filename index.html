@@ -106,13 +106,26 @@
   .screen h4{font-family:"Syne",sans-serif;font-weight:800;font-size:1.2rem;line-height:1.02;margin:0 0 8px}
   .screen p{margin:0;font-size:.64rem;opacity:.8;max-width:24ch;line-height:1.4}
   .screen .mini-cta{margin-top:14px;align-self:flex-start;font-size:.6rem;padding:6px 12px;border-radius:999px;font-weight:700}
-  .th-auto{background:radial-gradient(120% 120% at 80% 0%,#241004,#0c0a08);color:#ffb26b}
-  .th-auto .mini-cta{background:#ff7a1a;color:#150a02}
-  .th-dental{background:linear-gradient(160deg,#eafcff,#cdeef3);color:#0b3b46}
-  .th-dental p{color:#0b3b46}
-  .th-dental .mini-cta{background:#0bb5c9;color:#022b31}
-  .th-food{background:radial-gradient(120% 120% at 20% 10%,#2a0f18,#0c0708);color:#ffd9a8}
-  .th-food .mini-cta{background:#e8b45a;color:#241206}
+  /* AUTO — industrial: dark, left, bold uppercase */
+  .th-auto{background:radial-gradient(130% 130% at 85% 0%,#2a1305,#0b0908);color:#ffb26b;justify-content:flex-end}
+  .th-auto .sc-kicker{font-family:"JetBrains Mono",monospace;font-size:.55rem;letter-spacing:.22em;text-transform:uppercase;opacity:.85;margin-bottom:auto}
+  .th-auto h4{font-family:"Syne",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-.015em;font-size:1.02rem;line-height:.98}
+  .th-auto .mini-cta{background:#ff7a1a;color:#150a02;border-radius:6px}
+
+  /* DENTAL — clean: light, centered, rounded, airy */
+  .th-dental{background:linear-gradient(165deg,#f2fdff,#d6eff4);color:#0b3b46;align-items:center;text-align:center;justify-content:center}
+  .th-dental p{color:#2b6b78}
+  .th-dental .sc-kicker{font-family:"Poppins",sans-serif;font-weight:600;font-size:.56rem;letter-spacing:.05em;text-transform:uppercase;color:#0ba0b5;margin-bottom:10px}
+  .th-dental h4{font-family:"Poppins",sans-serif;font-weight:700;letter-spacing:-.01em;font-size:1.18rem;line-height:1.05}
+  .th-dental .mini-cta{background:#0bb5c9;color:#022b31;align-self:center;border-radius:999px;margin-top:14px}
+  .th-dental .art{left:50%;right:auto;transform:translateX(-50%);top:12px;opacity:.16}
+
+  /* RESTAURANT — editorial: dark wine, serif italic, refined */
+  .th-food{background:radial-gradient(130% 130% at 18% 6%,#301019,#0b0607);color:#f0d6b4;justify-content:flex-end}
+  .th-food .sc-kicker{position:absolute;top:16px;left:0;right:0;text-align:center;font-family:"JetBrains Mono",monospace;font-size:.52rem;letter-spacing:.32em;text-transform:uppercase;opacity:.65}
+  .th-food h4{font-family:"Fraunces",Georgia,serif;font-weight:600;font-style:italic;letter-spacing:0;font-size:1.42rem;line-height:1.02}
+  .th-food p{color:#c9a988}
+  .th-food .mini-cta{background:none;color:#f0d6b4;padding:6px 0;border-radius:0;border-bottom:1px solid rgba(240,214,180,.55);align-self:flex-start;margin-top:8px}
   .work-meta{padding:18px 18px 20px;display:flex;flex-direction:column;gap:12px}
   .work-meta .top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
   .work-meta h3{font-family:"Syne",sans-serif;font-weight:700;font-size:1.15rem;margin:0;filter:blur(5px);user-select:none;-webkit-user-select:none;pointer-events:none}
@@ -195,7 +208,7 @@
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@600;700&family=Fraunces:ital,wght@0,600;1,600&display=swap">
 </head>
 <body>
 <canvas id="scene" aria-hidden="true"></canvas>
@@ -245,7 +258,8 @@
           <div class="bar"><i></i><i></i><i></i><span class="url">varpa-auto.lv</span></div>
           <div class="screen th-auto">
             <svg class="art" viewBox="0 0 64 34" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 24h58M9 24c0-3 2-6 6-7l7-6h13l9 7 8 1c4 1 5 3 5 5"/><circle cx="18" cy="26" r="4"/><circle cx="46" cy="26" r="4"/></svg>
-            <h4>Tavs auto. Mūsu rūpes.</h4>
+            <div class="sc-kicker">24/7 · Auto serviss · Rīga</div>
+            <h4>Tavs auto.<br>Mūsu rūpes.</h4>
             <p>Rezervē remontu 30 sekundēs — bez zvaniem.</p>
             <span class="mini-cta">Pieteikties →</span>
           </div>
@@ -260,8 +274,9 @@
           <div class="bar"><i></i><i></i><i></i><span class="url">balta-zobi.lv</span></div>
           <div class="screen th-dental">
             <svg class="art" viewBox="0 0 40 46" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 8c-6-5-17-3-17 8 0 8 3 11 4 19 1 5 6 5 7 0l2-8c.4-2 3-2 3.4 0l2 8c1 5 6 5 7 0 1-8 4-11 4-19 0-11-11-13-17-8z"/></svg>
+            <div class="sc-kicker">★ Ģimenes zobārstniecība</div>
             <h4>Smaids, kas paliek.</h4>
-            <p>Pieraksties pie zobārsta dažos pieskārienos.</p>
+            <p>Pieraksties online dažos pieskārienos.</p>
             <span class="mini-cta">Rezervēt vizīti →</span>
           </div>
         </div>
@@ -274,6 +289,7 @@
         <div class="frame">
           <div class="bar"><i></i><i></i><i></i><span class="url">osta-restorans.lv</span></div>
           <div class="screen th-food">
+            <div class="sc-kicker">Osta — Restorāns</div>
             <svg class="art" viewBox="0 0 34 46" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h20c0 9-4 13-10 13S7 13 7 4zM17 17v22M10 39h14"/></svg>
             <h4>Garša ar skatu uz ostu.</h4>
             <p>Rezervē galdiņu vienā pieskārienā.</p>
