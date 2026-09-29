@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Golden Pink — Skaistuma studija</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap">
+<style>
+  :root{
+    --cream:#fdf7f2; --blush:#f6dbe4; --blush2:#f2c6d5; --rose:#c86b8e; --plum:#5e2740;
+    --gold:#c2a066; --gold-d:#a5844a; --ink:#3a2530; --muted:#8a6f7b; --line:rgba(94,39,64,.14);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:"Jost",system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .serif{font-family:"Cormorant Garamond",Georgia,serif}
+  .wrap{max-width:1120px;margin:0 auto;padding-inline:clamp(20px,5vw,56px)}
+  .btn{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(120deg,var(--rose),var(--plum));
+    color:#fff;font-weight:500;letter-spacing:.02em;padding:15px 28px;border-radius:999px;font-size:1rem;
+    box-shadow:0 12px 30px -12px rgba(94,39,64,.5);transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 18px 40px -14px rgba(200,107,142,.55)}
+  .btn-gold{background:linear-gradient(120deg,var(--gold),var(--gold-d))}
+  .kicker{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-d);font-weight:500}
+
+  /* nav */
+  .nav{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;
+    padding:22px clamp(20px,5vw,56px);padding-top:calc(22px + env(safe-area-inset-top,0px))}
+  .brand{font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600;letter-spacing:.02em;color:var(--plum)}
+  .brand b{color:var(--gold-d);font-weight:600}
+  .nav a.book{font-size:.85rem;font-weight:500;color:var(--plum);border:1px solid var(--line);padding:9px 18px;border-radius:999px}
+
+  /* hero */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;z-index:0;
+    background:radial-gradient(70% 55% at 78% 25%,var(--blush),transparent 60%),
+      radial-gradient(60% 50% at 10% 90%,#fbe9d6,transparent 60%),var(--cream)}
+  .blob{position:absolute;z-index:0;right:-8%;top:50%;transform:translateY(-50%);width:min(52vw,560px);height:min(52vw,560px);
+    background:conic-gradient(from 200deg,var(--blush2),#f7e3c8,var(--blush),#f3cddb,var(--blush2));
+    border-radius:46% 54% 58% 42%/48% 44% 56% 52%;filter:blur(2px);opacity:.85;
+    box-shadow:inset 0 0 80px rgba(255,255,255,.6);animation:float 9s ease-in-out infinite}
+  @keyframes float{0%,100%{border-radius:46% 54% 58% 42%/48% 44% 56% 52%}50%{border-radius:54% 46% 44% 56%/56% 52% 48% 44%}}
+  .hero-in{position:relative;z-index:2;max-width:640px;padding-block:120px 60px}
+  .hero h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(3.2rem,9vw,6rem);line-height:1;margin:.35em 0 .2em;color:var(--plum);letter-spacing:-.01em}
+  .hero h1 em{font-style:italic;color:var(--gold-d)}
+  .hero .sub{font-size:clamp(1.05rem,1.5vw,1.22rem);color:var(--muted);max-width:34ch;line-height:1.6;margin:0 0 34px}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero .note{font-size:.86rem;color:var(--muted)}
+
+  /* section */
+  section{position:relative;z-index:2}
+  .sec{padding-block:clamp(64px,9vw,110px)}
+  .sec-head{text-align:center;max-width:44ch;margin:0 auto clamp(38px,5vw,58px)}
+  .sec-head h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(2.1rem,4.5vw,3.1rem);color:var(--plum);margin:.3em 0 0;line-height:1.05}
+  .sec-head p{color:var(--muted);margin:.7em 0 0;line-height:1.6}
+  .rule{width:46px;height:1px;background:var(--gold);margin:14px auto 0}
+
+  /* services */
+  .svc{display:grid;grid-template-columns:1fr 1fr;gap:2px 44px;max-width:820px;margin:0 auto}
+  .svc .row{display:flex;align-items:baseline;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .svc .row .n{font-family:"Cormorant Garamond",serif;font-size:1.35rem;color:var(--ink);white-space:nowrap}
+  .svc .row .d{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px);margin:0 4px}
+  .svc .row .p{font-weight:500;color:var(--gold-d);white-space:nowrap;font-size:.95rem}
+
+  /* gallery of treatments */
+  .gal{background:linear-gradient(180deg,#fbeef2,var(--cream))}
+  .tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tile{aspect-ratio:3/4;border-radius:16px;position:relative;overflow:hidden;display:flex;align-items:flex-end;
+    padding:20px;color:#fff;box-shadow:0 14px 34px -18px rgba(94,39,64,.5)}
+  .tile span{position:relative;z-index:2;font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:600;text-shadow:0 2px 12px rgba(60,20,40,.35)}
+  .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(70,25,45,.5))}
+  .t1{background:linear-gradient(135deg,#e9a7be,#c86b8e)}
+  .t2{background:linear-gradient(135deg,#f0d9a8,#c2a066)}
+  .t3{background:linear-gradient(135deg,#e7b7c9,#b06484)}
+  .t4{background:linear-gradient(135deg,#f3cdb0,#d98f6b)}
+  .t5{background:linear-gradient(135deg,#dcaec4,#8e4d6c)}
+  .t6{background:linear-gradient(135deg,#f2ddc0,#c9a86a)}
+
+  /* about / info */
+  .info{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,70px);align-items:center}
+  .info .card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:34px}
+  .info h3{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.9rem;color:var(--plum);margin:0 0 .4em}
+  .info p{color:var(--muted);line-height:1.7;margin:.4em 0}
+  .meta{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:14px}
+  .meta li{display:flex;gap:14px;align-items:center}
+  .meta .k{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);min-width:78px;font-weight:500}
+  .meta .v{color:var(--ink);font-weight:500}
+
+  /* booking band */
+  .book{background:linear-gradient(120deg,var(--plum),#7c3557);color:#fff;text-align:center;border-radius:26px;
+    padding:clamp(40px,6vw,64px);box-shadow:0 24px 60px -30px rgba(94,39,64,.7)}
+  .book h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(2rem,4.5vw,3rem);margin:0 0 .3em}
+  .book p{color:#f4dbe6;margin:0 auto 28px;max-width:40ch;line-height:1.6}
+
+  footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:.85rem}
+  footer .b{font-family:"Cormorant Garamond",serif;font-size:1.3rem;color:var(--plum);margin-bottom:6px}
+
+  @media (max-width:760px){
+    .svc{grid-template-columns:1fr;gap:0}
+    .info{grid-template-columns:1fr}
+    .tiles{grid-template-columns:repeat(2,1fr)}
+    .nav a.book{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="brand">Golden<b> Pink</b></div>
+  <a class="book" href="#rezervet">Rezervēt vizītu</a>
+</header>
+
+<section class="hero">
+  <div class="blob"></div>
+  <div class="wrap hero-in">
+    <div class="kicker">Skaistuma studija · Rīga</div>
+    <h1>Tava skaistuma<br><em>oāze</em> Rīgas centrā</h1>
+    <p class="sub">Manikīrs, sejas kopšana, uzacis un skropstas — ar mīlestību pret katru detaļu.</p>
+    <div class="cta">
+      <a class="btn" href="#rezervet">Rezervē vizītu</a>
+      <span class="note">Ģertrūdes iela 77 · +371 20 150 446</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="pakalpojumi">
+  <div class="sec-head">
+    <div class="kicker">Pakalpojumi</div>
+    <h2>Rūpes par tevi</h2>
+    <div class="rule"></div>
+  </div>
+  <div class="svc">
+    <div class="row"><span class="n">Manikīrs & gēllaka</span><span class="d"></span><span class="p">no 25 €</span></div>
+    <div class="row"><span class="n">Pedikīrs</span><span class="d"></span><span class="p">no 30 €</span></div>
+    <div class="row"><span class="n">Sejas kopšana</span><span class="d"></span><span class="p">no 40 €</span></div>
+    <div class="row"><span class="n">Uzacu korekcija & krāsošana</span><span class="d"></span><span class="p">no 15 €</span></div>
+    <div class="row"><span class="n">Skropstu laminēšana</span><span class="d"></span><span class="p">no 35 €</span></div>
+    <div class="row"><span class="n">Vaksācija</span><span class="d"></span><span class="p">no 20 €</span></div>
+    <div class="row"><span class="n">Grims / make-up</span><span class="d"></span><span class="p">no 45 €</span></div>
+    <div class="row"><span class="n">Dāvanu karte</span><span class="d"></span><span class="p">jebkura summa</span></div>
+  </div>
+</section>
+
+<section class="sec gal">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Galerija</div>
+      <h2>Mūsu darbi</h2>
+      <p>Šeit izliksim jūsu skaistākos darbu foto — katrs klients redzēs, ko sagaidīt.</p>
+      <div class="rule"></div>
+    </div>
+    <div class="tiles">
+      <div class="tile t1"><span>Manikīrs</span></div>
+      <div class="tile t2"><span>Uzacis</span></div>
+      <div class="tile t3"><span>Sejas kopšana</span></div>
+      <div class="tile t4"><span>Pedikīrs</span></div>
+      <div class="tile t5"><span>Skropstas</span></div>
+      <div class="tile t6"><span>Grims</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="par">
+  <div class="info">
+    <div>
+      <div class="kicker">Par mums</div>
+      <h3 class="serif" style="font-size:clamp(2rem,4vw,2.7rem)">Vieta, kur atgriezties skaistai</h3>
+      <p>Golden Pink ir mājīga skaistuma studija Rīgas centrā, kur par tevi rūpējas ar sirdi. Kvalitatīvi materiāli, uzmanība detaļām un mierpilna atmosfēra — lai tu ietu ārā gan skaistāka, gan atpūtusies.</p>
+      <p>Pieraksties dažos pieskārienos — un pārējo atstāj mums.</p>
+    </div>
+    <div class="card">
+      <ul class="meta">
+        <li><span class="k">Adrese</span><span class="v">Ģertrūdes iela 77, Rīga</span></li>
+        <li><span class="k">Telefons</span><span class="v">+371 20 150 446</span></li>
+        <li><span class="k">Darba laiks</span><span class="v">P.–Pk. 10–20 · Se. 10–17</span></li>
+        <li><span class="k">Pieraksts</span><span class="v">WhatsApp · zvans</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="rezervet">
+  <div class="book">
+    <div class="kicker" style="color:#f0c9d8">Rezervē vizītu</div>
+    <h2>Gatava sajusties skaista?</h2>
+    <p>Pieraksties vienā pieskārienā — uzraksti mums WhatsApp, un mēs atradīsim tev ērtāko laiku.</p>
+    <a class="btn btn-gold" href="https://wa.me/37120150446?text=Sveiki!%20V%C4%93los%20pierakst%C4%ABties%20uz%20viz%C4%ABti." target="_blank" rel="noopener">
+      Rezervēt caur WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="b serif">Golden Pink</div>
+  Skaistuma studija · Ģertrūdes iela 77, Rīga · +371 20 150 446
+</footer>
+
+</body>
+</html>
